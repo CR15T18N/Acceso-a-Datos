@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+
 import pojo.Serie;
 import util.DatabaseConnection;
 
@@ -163,9 +165,28 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie>{
 	}
 	
 	@Override
-	public void borrar(Serie t) {
+	public void borrar(Serie serie) {
 		// TODO Auto-generated method stub
 		
+		int serie_id = serie.getId();
+		
+		TemporadaDao temporadaDao = new TemporadaDao();
+		temporadaDao.borrarPorSerie(serie_id);
+		
+		connection = openConnection();
+		
+		String query = "DELETE FROM series WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, serie_id);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		closeConnection();
 	}
 	
 }

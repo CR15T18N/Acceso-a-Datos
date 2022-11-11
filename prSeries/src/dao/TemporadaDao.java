@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+
 import pojo.Temporada;
 import util.DatabaseConnection;
 
@@ -83,6 +85,44 @@ public class TemporadaDao implements InterfazDao<Temporada>{
 	public void borrar(Temporada t) {
 		// TODO Auto-generated method stub
 		
+		connection = openConnection();
+		
+		int id = t.getId();
+		
+		String query = "DELETE FROM temporadas WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		closeConnection();
+	}
+	
+	/**
+	 * 
+	 * @param serie_id
+	 */
+	public void borrarPorSerie (int serie_id) {
+		connection = openConnection();
+		
+		String query = "DELETE FROM temporadas WHERE serie_id = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, serie_id);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		closeConnection();
 	}
 	
 	private static Connection openConnection() {

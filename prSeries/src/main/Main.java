@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-				//Serie  serie = new Serie("Los Simpsons", 7, "Disney Plus");
+				/*//Serie  serie = new Serie("Los Simpsons", 7, "Disney Plus");
 				SerieDao serieDao = new SerieDao();
 				//serieDao.insert(serie);
 				//System.out.println(serieDao.buscarPorId(1));
@@ -34,11 +34,27 @@ public class Main {
 					System.out.println(temporada);
 				}
 				
-				/*ArrayList<Serie> series = serieDao.buscarTodos();
+				ArrayList<Serie> series = serieDao.buscarTodos();
 				
 				for (Serie serie : series) {
 					System.out.println(serie.getTitulo());
 				}*/
+		
+				SerieDao serieDao = new SerieDao();
+				TemporadaDao temporadaDao = new TemporadaDao();
+				
+				/*Serie s = serieDa.buscarPorId(2);
+				Temporada t1 = new Temporada(1, "The Mandalorian Season 1", s);
+				Temporada t2 = new Temporada(2, "The Mandalorian Season 2", s);
+				Temporada t3 = new Temporada(3, "The Mandalorian Final Season", s);
+				temporadaDao.insert(t1);
+				temporadaDao.insert(t2);
+				temporadaDao.insert(t3);*/
+				
+				//temporadaDao.borrarPorSerie(2);
+				
+				Serie s = serieDao.buscarPorId(1);
+				serieDao.borrar(s);
 	}
 
 }
