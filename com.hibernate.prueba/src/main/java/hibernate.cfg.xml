@@ -6,9 +6,9 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">admin</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/bd_zoologico</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/db_zoologico</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.default_schema">bd_zoologico</property>
+        <property name="hibernate.default_schema">db_zoologico</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <mapping class="pojo.Animal"/>
     </session-factory>

@@ -1,4 +1,4 @@
-package pojo.com.hibernate.prueba;
+package pojo;
 // Generated 25 nov 2022 12:10:57 by Hibernate Tools 5.5.9.Final
 
 import java.math.BigDecimal;
