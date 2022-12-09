@@ -15,6 +15,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
 		
 		/*Animal a1 = new Animal("Kuokka", "Jungla", new BigDecimal(2));
 		session.save(a1);
@@ -24,7 +25,7 @@ public class Main {
 		System.out.println(a.getNombre());*/	
 		
 		//List animales = session.createQuery("FROM Animal").getResultList();
-		String hql = "FROM Animal WHERE habitat = :habitat";
+		/*String hql = "FROM Animal WHERE habitat = :habitat";
 		Query query = session.createQuery(hql);
 		query.setParameter("habitat" , "Casa");
 		List animales = query.getResultList();
@@ -32,8 +33,9 @@ public class Main {
 		for(Iterator i = animales.iterator(); i.hasNext();) {
 			Animal a = (Animal) i.next();
 			System.out.println(a.getNombre());
-		}
+		}*/
 		
+		session.getTransaction().commit();
 		session.close();
 	}
 
