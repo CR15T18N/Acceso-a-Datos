@@ -15,10 +15,11 @@ public class Libro {
 		this.biblioteca = biblioteca;
 	}
 
-	public Libro(String titulo, String seccion) {
+	public Libro(String titulo, String seccion, Biblioteca biblioteca) {
 		super();
 		this.titulo = titulo;
 		this.seccion = seccion;
+		this.biblioteca = biblioteca;
 	}
 	
 	public Libro(int id, String titulo, String seccion) {

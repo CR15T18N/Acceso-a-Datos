@@ -184,7 +184,6 @@ public class BibliotecaDao extends ObjetoDao implements InterfazDao<Biblioteca> 
 						rs.getString("titulo"),
 						rs.getString("seccion"),
 						biblioteca
-						
 						);
 				libros.add(libro);
 			}
@@ -194,7 +193,7 @@ public class BibliotecaDao extends ObjetoDao implements InterfazDao<Biblioteca> 
 			e.printStackTrace();
 		}
 		
-		//closeConnection();
+		closeConnection();
 		
 		return libros;
 	}
