@@ -143,7 +143,7 @@ public class LibroDao extends ObjetoDao implements InterfazDao<Libro> {
         String nuevaSeccion = libro.getSeccion();
         Biblioteca biblioteca = libro.getBiblioteca();
 
-        String query = "update libro set titulo = ?, seccion = ?, bibliotecas_id = ? where id = ?";
+        String query = "update libros set titulo = ?, seccion = ?, bibliotecas_id = ? where id = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(query);

@@ -65,6 +65,8 @@ public class BibliotecaDao extends ObjetoDao implements InterfazDao<Biblioteca> 
 			e.printStackTrace();
 		}
 		
+		closeConnection();
+		
 		return bibliotecas;
 	}
 
@@ -72,9 +74,10 @@ public class BibliotecaDao extends ObjetoDao implements InterfazDao<Biblioteca> 
 	public Biblioteca buscarPorId(int id) {
 		connection = openConnection();
 		
-		Biblioteca biblioteca = null;
+		
 		
 		String query = "select * from bibliotecas where id = ?";
+		Biblioteca biblioteca = null;
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
@@ -128,8 +131,7 @@ public class BibliotecaDao extends ObjetoDao implements InterfazDao<Biblioteca> 
 		
 		connection = openConnection();
 		
-		String query = "UPDATE bibliotecas SET nombre = ?, telefono = ? "
-				+ " WHERE id = ?";
+		String query = "UPDATE bibliotecas SET nombre = ?, telefono = ? WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
@@ -193,7 +195,7 @@ public class BibliotecaDao extends ObjetoDao implements InterfazDao<Biblioteca> 
 			e.printStackTrace();
 		}
 		
-		closeConnection();
+		//closeConnection();
 		
 		return libros;
 	}

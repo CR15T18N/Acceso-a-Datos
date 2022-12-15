@@ -12,85 +12,30 @@ import pojo.Libro;
 public class Main {
 
 	public static void main(String[] args) {
-		//Serie serie = new Serie("Los Simpsons", 7, "Disney Plus");
-		//Biblioteca biblioteca = new Biblioteca("Cervantes", 6525545);
-		//BibliotecaDao bibliotecaDao = new BibliotecaDao();
-		//bibliotecaDao.insertar(biblioteca);
-		//SerieDao serieDao = new SerieDao();
-		//serieDao.insertar(serie);
-		//System.out.println(serieDao.buscarPorId(1)); 
-		//Serie serie = serieDao.buscarPorId(1);
-		//System.out.println(serie); 
-		//Temporada t1 = new Temporada(1, "Temporada 1", serie);
-		//Temporada t2 = new Temporada(2, "Temporada 2", serie);
-		
-		//TemporadaDao temporadaDao = new TemporadaDao();
-		//temporadaDao.insertar(t1);
-		//temporadaDao.insertar(t2); 
-		
-		//Serie s = new Serie("The Mandalorian", 12, "Disney Plus");
-		//serieDao.insertar(s); 
-		
-		//Serie los_simpsons = serieDao.buscarPorId(1);
-		//los_simpsons.setPlataforma("Netflix"); 
-		//serieDao.modificar(los_simpsons); 
-		
-		//ArrayList<Temporada> temporadas = serieDao.obtenerTemporadas(los_simpsons);
-		
-		/*ArrayList<Temporada> temporadas = los_simpsons.getTemporadas();
-		
-		for (Temporada temporada : temporadas) {
-			System.out.println(temporada); 
-		}*/
-		
-		/*ArrayList<Serie> series = serieDao.buscarTodos();
-		
-		for (Serie serie : series) {
-			System.out.println("SERIE: " + serie.getTitulo()); 
-			for (Temporada temporada : serie.getTemporadas()) {
-				System.out.println("TEMPORADA: " + temporada.getTitulo()); 
-			}
-		}*/
-		
-		//	Insertar temporadas para The Mandalorian
-		//SerieDao serieDao = new SerieDao();
-		//TemporadaDao temporadaDao = new TemporadaDao();
-		
-		/*Serie s = serieDao.buscarPorId(2);
-		Temporada t1 = new Temporada(1, "The Mandalorian Season 1", s);
-		Temporada t2 = new Temporada(2, "The Mandalorian Season 2", s);
-		Temporada t3 = new Temporada(3, "The Mandalorian Final Season", s);
-		temporadaDao.insertar(t1);
-		temporadaDao.insertar(t2);
-		temporadaDao.insertar(t3); */
-		
-		//temporadaDao.borrarPorSerie(2); 
-		
-		//Serie s = serieDao.buscarPorId(2);
-		//serieDao.borrar(s); 
-		
 		BibliotecaDao bibliotecaDao = new BibliotecaDao();
 		LibroDao libroDao = new LibroDao();
 		
 		//INSERCION
-        System.out.println("\n\nINSERCION DE DATOS:");
-		Biblioteca c = new Biblioteca("Cervantes", 951926104);
+        System.out.println("INSERCION DE DATOS:");
+		Biblioteca c = new Biblioteca("NombreMal", 951926104);
 		bibliotecaDao.insertar(c);
-		Biblioteca cc = bibliotecaDao.buscarPorId(2);
-		Libro l1 = new Libro(1, "El apagaon", "FILOSOFIA", cc);
-		Libro l2 = new Libro(2, "Tormenta de espadas", "NARRATIVA", cc);
-		Libro l3 = new Libro(3, "La inercia del silencio", "POESIA", cc);
+		Biblioteca d = bibliotecaDao.buscarPorId(1);
+		Libro l1 = new Libro(1, "El apagon", "FILOSOFIA", d);
+		Libro l2 = new Libro(2, "Tormenta de espadas", "NARRATIVA", d);
+		Libro l3 = new Libro(3, "La inercia del silencio", "POESIA", d);
 		libroDao.insertar(l1);
 		libroDao.insertar(l2);
 		libroDao.insertar(l3);
-		/*Biblioteca p = new Biblioteca("Provincial", 951920530);
+		Biblioteca p = new Biblioteca("Provincial", 951920530);
 		bibliotecaDao.insertar(p);
-		Libro b1 = new Libro(1, "Hamlet", "TEATRO", p);
-		Libro b2 = new Libro(2, "Churchill: La biografia", "BIOGRAFIAS", p);
-		Libro b3 = new Libro(3, "Prisioneros de la geografía", "GEOGRAFIA", p);
+		Biblioteca s = bibliotecaDao.buscarPorId(2);
+		Libro b1 = new Libro(4, "Hamlet", "TEATRO", s);
+		Libro b2 = new Libro(5, "Churchill: La biografia", "BIOGRAFIAS", s);
+		Libro b3 = new Libro(6, "Prisioneros de la geografia", "GEOGRAFIA", s);
 		libroDao.insertar(b1);
 		libroDao.insertar(b2);
-		libroDao.insertar(b3);*/
+		libroDao.insertar(b3);
+		System.out.println("Datos insertados");
 		
 		//CONSULTA
         System.out.println("\n\nCONSULTA DE DATOS: ");
@@ -103,27 +48,34 @@ public class Main {
             }
         }
         
-        /*
 		//MODIFICACION
-        System.out.println("\n\nMODIFICACIÓN DE DATOS:");
-        razaGato.setNombre("Gato Azul ruso");
-        razaDao.modificar(razaGato);
-        Raza razaGatoModificada = razaDao.buscarPorId(razaGato.getId());
-        System.out.println("Raza de gato modificada: " + razaGatoModificada);
+        System.out.println("\n\nMODIFICACION DE DATOS:");
+        l2.setTitulo("The Witcher");
+        libroDao.modificar(l2);
+        Libro l1modificado = libroDao.buscarPorId(l2.getId());
+        System.out.println("Titulo modificado: " + l1modificado.getTitulo());
+        d.setNombre("Cervantes");
+        bibliotecaDao.modificar(d);
+        System.out.println("Nombre modificado: " + d.getNombre());
 
 		//ELIMINACION
-        perro1.setRaza(razaPerro2);
-        animalDao.modificar(perro1);
-        Animal perroModificado = animalDao.buscarPorId(perro1.getId());
-		int idAnimalParaBorrar = gato1.getId();
-        animalDao.borrar(gato1);
-        Animal animalBorrado = animalDao.buscarPorId(idAnimalParaBorrar);
-        if (animalBorrado == null) {
-            System.out.println("Animal con id " + idAnimalParaBorrar + " borrado con éxito.");
+        System.out.println("\n\nELIMINACION DE DATOS:");
+        libroDao.borrar(l3);
+        Libro l3borrado = libroDao.buscarPorId(l3.getId());
+        if (l3borrado == null) {
+            System.out.println("Libro borrado.");
         } else {
-            System.err.println("Animal con id " + idAnimalParaBorrar + " no borrado.");
+            System.err.println("Libro no borrado.");
         }
-		 */
+        
+        bibliotecaDao.borrar(s);
+        Biblioteca pborrado = bibliotecaDao.buscarPorId(s.getId());
+        if (pborrado == null) {
+            System.out.println("Biblioteca borrada.");
+        } else {
+            System.err.println("Biblioteca no borrada.");
+        }
+        
 	}
 
 }

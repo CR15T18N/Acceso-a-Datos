@@ -7,7 +7,7 @@ import util.DatabaseConnection;
 
 public class ObjetoDao {
 	
-	private static Connection connection;
+	protected static Connection connection;
 
 	protected static Connection openConnection() {
 		DatabaseConnection dbConnection = new DatabaseConnection();
